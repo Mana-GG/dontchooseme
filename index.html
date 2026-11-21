@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f0e8">
+<meta name="description" content="Don't Choose Me est un concept social : une invitation à parler autrement des personnes, des liens, de la confiance et de nos choix.">
+<title>Don't Choose Me — Parlons vraiment des personnes</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{
+ --paper:#f4f0e8;--paper2:#eae4d8;--ink:#20231f;--muted:#686d63;--line:#d8d1c4;
+ --orange:#f05a36;--orange2:#d94a2b;--green:#b9d66b;--dark:#202820;--white:#fffdf8;
+ --serif:Georgia,'Times New Roman',serif;--sans:'DM Sans',Arial,sans-serif;--display:Manrope,Arial,sans-serif;
+ --max:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
+a{color:inherit}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-1.2px;text-decoration:none}
+.brand i{font-style:normal;color:var(--orange)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font-size:12px;text-decoration:none;color:var(--muted);font-weight:600}
+.nav a:hover{color:var(--orange)}
+.nav-cta{border:1px solid var(--ink)!important;border-radius:100px;padding:9px 15px;color:var(--ink)!important}
+.menu{display:none;border:1px solid var(--line);background:transparent;border-radius:50px;padding:8px 14px}
+.hero{padding:100px 0 76px;display:grid;grid-template-columns:1.13fr .87fr;gap:50px;align-items:center}
+.eyebrow{font:500 11px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.14em;color:var(--orange)}
+h1,h2,h3,p{margin-top:0}
+h1{font:700 clamp(56px,7.4vw,100px)/.98 var(--display);letter-spacing:-.085em;margin:22px 0 24px;max-width:760px}
+h1 span{font-family:var(--serif);font-weight:400;font-style:italic;color:var(--orange);letter-spacing:-.075em}
+.hero-copy{font-size:19px;line-height:1.55;color:#4d534b;max-width:590px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:100px;text-decoration:none;font-size:13px;font-weight:700;transition:.2s}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-outline{border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.hero-art{min-height:470px;background:var(--dark);border-radius:4px 130px 4px 4px;position:relative;overflow:hidden;padding:30px;color:var(--white)}
+.hero-art:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;border:1px solid rgba(255,255,255,.18);right:-80px;top:60px}
+.hero-art:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.18);right:-20px;top:120px}
+.art-label{font:11px 'DM Mono',monospace;color:var(--green);letter-spacing:.14em;text-transform:uppercase;position:relative;z-index:1}
+.art-quote{position:absolute;z-index:2;left:30px;right:35px;top:130px;font:italic clamp(30px,4vw,48px)/1.12 var(--serif);letter-spacing:-1.2px}
+.art-quote b{font-style:normal;color:var(--green);font-weight:400}
+.art-bottom{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;display:flex;justify-content:space-between;align-items:end;color:#c1c8bc;font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.art-mark{font:700 76px/.8 var(--display);color:var(--orange);letter-spacing:-.1em}
+.manifesto{background:var(--orange);color:#fff9f0;padding:75px 0}
+.manifesto-inner{display:grid;grid-template-columns:.35fr 1.65fr;gap:35px;align-items:start}
+.manifesto .eyebrow{color:#3c251d}
+.manifesto blockquote{font:italic clamp(29px,4.3vw,54px)/1.17 var(--serif);letter-spacing:-1.3px;margin:0;max-width:900px}
+.manifesto blockquote strong{font-style:normal;font-family:var(--display);font-weight:700}
+section.content{padding:100px 0;border-bottom:1px solid var(--line)}
+.section-top{display:grid;grid-template-columns:1fr .7fr;gap:50px;align-items:end;margin-bottom:45px}
+.section-no{font:11px 'DM Mono',monospace;color:var(--orange);letter-spacing:.14em}
+h2{font:700 clamp(38px,5vw,65px)/1.03 var(--display);letter-spacing:-.075em;margin:14px 0 0}
+.section-top p{color:var(--muted);font-size:16px;max-width:450px;margin:0}
+.thesis{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.thesis article{padding:28px 28px 30px 0}
+.thesis article+article{border-left:1px solid var(--line);padding-left:28px}
+.thesis .big{font:italic 38px var(--serif);color:var(--orange)}
+.thesis h3{font:700 20px var(--display);letter-spacing:-.04em;margin:14px 0 7px}
+.thesis p{font-size:14px;color:var(--muted);margin:0;max-width:300px}
+.not-game{background:var(--dark);color:var(--white);padding:88px 0}
+.not-game .section-no{color:var(--green)}
+.not-game h2{max-width:800px}
+.not-game .intro{color:#c2c9bd;font-size:18px;max-width:710px;margin:22px 0 42px}
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contrast article{padding:28px;border:1px solid #465044;border-radius:3px}
+.contrast article:first-child{background:#2b352c}
+.contrast .label{font:11px 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}
+.contrast h3{font:700 25px var(--display);letter-spacing:-.05em;margin:13px 0}
+.contrast p{font-size:14px;color:#c4cbc1;margin:0}
+.contrast .no{color:#f58a70}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.flow article{padding:25px 20px 28px 0;position:relative}
+.flow article+article{padding-left:20px;border-left:1px solid var(--line)}
+.flow .index{font:11px 'DM Mono',monospace;color:var(--orange)}
+.flow h3{font:700 19px var(--display);letter-spacing:-.04em;margin:15px 0 8px}
+.flow p{font-size:13px;color:var(--muted);margin:0}
+.note{margin-top:20px;padding:17px 20px;background:var(--paper2);border-left:3px solid var(--orange);font-size:13px;color:#51574e}
+.two-worlds{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.world{background:var(--white);padding:30px;border:1px solid var(--line);min-height:270px;position:relative}
+.world .eyebrow{margin-bottom:22px}
+.world h3{font:700 30px/1.05 var(--display);letter-spacing:-.06em;max-width:370px}
+.world p{color:var(--muted);font-size:14px;max-width:440px}
+.world .example{margin-top:20px;padding-top:17px;border-top:1px solid var(--line);font:italic 17px var(--serif);color:var(--orange)}
+.people{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}
+.person{border:1px solid var(--line);border-radius:100px;padding:6px 11px;font:11px 'DM Mono',monospace;color:#60675d}
+.conversation{background:#e7e1d5;padding:28px;display:grid;grid-template-columns:.8fr 1.2fr;gap:30px}
+.conversation h3{font:700 28px/1.08 var(--display);letter-spacing:-.06em;margin:10px 0}
+.conversation .sidecopy{font-size:14px;color:var(--muted)}
+.dialogue{display:flex;flex-direction:column;gap:10px}
+.line{max-width:88%;padding:13px 16px;background:var(--white);font-size:13px;border-radius:2px}
+.line.right{align-self:flex-end;background:var(--dark);color:var(--white)}
+.line span{display:block;font:10px 'DM Mono',monospace;color:var(--orange);margin-bottom:5px}
+.line.right span{color:var(--green)}
+.promptbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.promptbar button{background:transparent;border:1px solid #bdb5a7;border-radius:100px;padding:8px 12px;font-size:11px;cursor:pointer}
+.promptbar button.active,.promptbar button:hover{background:var(--orange);border-color:var(--orange);color:white}
+#prompt-answer{font:italic 18px var(--serif);color:var(--orange);min-height:54px;margin:15px 0 0}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillar{background:var(--paper);padding:25px}
+.pillar h3{font:700 20px var(--display);letter-spacing:-.04em;margin:0 0 7px}
+.pillar p{font-size:13px;color:var(--muted);margin:0}
+.pillar .symbol{font:italic 27px var(--serif);color:var(--orange);margin-bottom:13px}
+.brain-intro{max-width:760px;font-size:17px;color:var(--muted);margin:20px 0 35px}
+.science{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.science article{border-top:2px solid var(--orange);padding:20px 18px 0 0}
+.science h3{font:700 19px var(--display);letter-spacing:-.04em;margin:0 0 9px}
+.science p{font-size:13px;color:var(--muted);margin:0}
+.disclaimer{font-size:12px;color:var(--muted);padding:16px 18px;background:var(--paper2);margin-top:24px}
+.principles{background:var(--green);padding:76px 0}
+.principles h2{max-width:650px}
+.principle-list{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:35px}
+.principle-list article{border-top:1px solid rgba(32,35,31,.35);padding-top:17px}
+.principle-list b{font:11px 'DM Mono',monospace}
+.principle-list h3{font:700 20px var(--display);letter-spacing:-.04em;margin:14px 0 6px}
+.principle-list p{font-size:13px;color:#49533b;margin:0}
+.closing{padding:105px 0;text-align:center}
+.closing .eyebrow{margin-bottom:20px}
+.closing h2{font-size:clamp(45px,7vw,86px);max-width:900px;margin:0 auto;line-height:.98}
+.closing h2 em{font:italic 400 1em var(--serif);color:var(--orange)}
+.closing p{max-width:600px;margin:25px auto 0;color:var(--muted);font-size:16px}
+footer{background:var(--dark);color:#c3c9bf;padding:34px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.foot .brand{color:white}
+.foot small{font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:800px){
+ .hero{grid-template-columns:1fr;padding:70px 0 55px;gap:35px}.hero-art{min-height:390px}
+ .section-top{grid-template-columns:1fr;gap:18px}
+ .manifesto-inner{grid-template-columns:1fr;gap:20px}
+ .flow{grid-template-columns:1fr 1fr}.flow article:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}
+ .flow article:nth-child(4){border-top:1px solid var(--line)}
+ .conversation{grid-template-columns:1fr}
+ .science{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ .wrap{width:calc(100% - 32px)}.topbar{height:66px}
+ .nav{display:none;position:absolute;top:66px;left:0;right:0;background:var(--paper);padding:20px 24px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
+ .nav.open{display:flex}.menu{display:block}
+ .hero{padding:60px 0 45px}h1{font-size:clamp(53px,15vw,76px)}
+ .hero-copy{font-size:17px}.hero-art{min-height:360px;border-top-right-radius:90px}
+ section.content{padding:70px 0}.manifesto{padding:60px 0}
+ .thesis{grid-template-columns:1fr}.thesis article,.thesis article+article{padding:22px 0;border-left:0}
+ .thesis article+article{border-top:1px solid var(--line)}
+ .contrast,.two-worlds{grid-template-columns:1fr}
+ .flow{grid-template-columns:1fr}.flow article,.flow article+article{padding:20px 0;border-left:0;border-top:1px solid var(--line)}
+ .flow article:first-child{border-top:0}
+ .pillars{grid-template-columns:1fr}
+ .science{grid-template-columns:1fr}
+ .principle-list{grid-template-columns:1fr;gap:20px}
+ .foot{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap topbar">
+  <a class="brand" href="#accueil">DON'T <i>CHOOSE</i> ME.</a>
+  <nav class="nav" id="nav">
+   <a href="#idee">L'idée</a><a href="#principe">Le principe</a><a href="#vivre">Le vivre</a><a href="#humain">L'humain</a><a class="nav-cta" href="#manifeste">Notre vision</a>
+  </nav>
+  <button class="menu" id="menu" aria-label="Afficher la navigation">Menu</button>
+ </div>
+</header>
+
+<main id="accueil">
+ <div class="wrap hero">
+  <div>
+   <div class="eyebrow">Un concept social · Une autre façon d'entrer en relation</div>
+   <h1>Et si on parlait<br><span>vraiment</span> des gens&nbsp;?</h1>
+   <p class="hero-copy">Nos conversations tournent souvent autour de la routine. Don't Choose Me propose autre chose : parler des personnes, de ce qui nous lie, de ce qui nous oppose, de la confiance que l'on accorde et des choix que l'on ferait.</p>
+   <div class="hero-actions"><a class="btn btn-dark" href="#idee">Découvrir l'idée <span aria-hidden="true">&nbsp;↓</span></a><a class="btn btn-outline" href="#principe">Comprendre le principe</a></div>
+  </div>
+  <div class="hero-art" aria-label="Citation du concept">
+   <div class="art-label">Une invitation à penser les relations autrement</div>
+   <div class="art-quote">« Qui est-ce que tu laisserais partir <b>en premier</b>… et pourquoi&nbsp;? »</div>
+   <div class="art-bottom"><span>Les personnes.<br>Les liens. Les choix.</span><span class="art-mark">DCM.</span></div>
+  </div>
+ </div>
+
+ <div class="manifesto" id="manifeste">
+  <div class="wrap manifesto-inner">
+   <div class="eyebrow">L'intention</div>
+   <blockquote>Nous ne sommes pas seulement ce que nous faisons chaque jour. Nous sommes aussi <strong>les liens que nous créons, les personnes que nous comprenons, celles auxquelles nous faisons confiance — et celles que nous ne choisirions pas.</strong></blockquote>
+  </div>
+ </div>
+
+ <section class="content" id="idee">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">01 / L'IDÉE</div><h2>Remettre les relations humaines au centre.</h2></div><p>Don't Choose Me part d'une envie simple : faire émerger des conversations plus spontanées, plus profondes et plus engageantes. Pas pour remplir le silence, mais pour découvrir comment chacun perçoit le monde social qui l'entoure.</p></div>
+   <div class="thesis">
+    <article><div class="big">01</div><h3>Dire ce qu'on pense</h3><p>Exprimer une impression, expliquer une confiance, reconnaître un doute ou formuler un désaccord.</p></article>
+    <article><div class="big">02</div><h3>Comprendre les autres</h3><p>Écouter leurs raisons, découvrir leurs critères et confronter des visions parfois très différentes.</p></article>
+    <article><div class="big">03</div><h3>Faire évoluer les liens</h3><p>Une conversation peut rapprocher, surprendre, questionner une relation ou révéler une perception inattendue.</p></article>
+   </div>
+  </div>
+ </section>
+
+ <section class="not-game" id="principe">
+  <div class="wrap">
+   <div class="section-no">02 / CE QUE C'EST — ET CE QUE CE N'EST PAS</div>
+   <h2>Ce n'est pas un jeu à lancer.<br>C'est une conversation à vivre.</h2>
+   <p class="intro">Pas de plateau, pas de téléphone, pas de matériel, pas de manche, pas de gagnant officiel. Don't Choose Me n'est pas un produit à utiliser : c'est un concept social qui peut prendre place dans une conversation déjà en cours, entre deux personnes ou au milieu d'un groupe.</p>
+   <div class="contrast">
+    <article><div class="label">Ce n'est pas</div><h3 class="no">Une partie avec des règles à suivre.</h3><p>Personne n'a besoin d'annoncer un début, de compter des points, de former des équipes ou d'attendre un résultat. On n'a pas à « jouer à Don't Choose Me » pour en vivre l'esprit.</p></article>
+    <article><div class="label">C'est</div><h3>Une manière d'ouvrir la discussion.</h3><p>Une question, un choix ou une opinion suffit. La conversation évolue avec les personnes présentes, les relations évoquées et les idées qui émergent. Elle peut s'interrompre et reprendre naturellement.</p></article>
+   </div>
+  </div>
+ </section>
+
+ <section class="content">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">03 / LE FIL CONDUCTEUR</div><h2>Une idée simple : commencer par éliminer.</h2></div><p>Le nom porte la mécanique symbolique du concept. On ne demande pas qui l'on préfère. On demande qui l'on ferait partir en premier, puis qui ensuite. Le dernier qui reste est celui qu'on n'a pas éliminé dans cette réflexion.</p></div>
+   <div class="flow">
+    <article><div class="index">POINT DE DÉPART</div><h3>Une liste vivante</h3><p>Des personnes que l'on connaît, qu'elles soient présentes ou absentes. Les interlocuteurs eux-mêmes peuvent en faire partie.</p></article>
+    <article><div class="index">PREMIER MOUVEMENT</div><h3>Qui part en premier&nbsp;?</h3><p>On désigne la première personne que l'on éliminerait et on donne ses raisons. C'est le point d'entrée, pas un verdict.</p></article>
+    <article><div class="index">LA CONVERSATION</div><h3>Pourquoi ce choix&nbsp;?</h3><p>On questionne, on défend, on contredit, on imagine les choix des autres. Les stratégies et les alliances restent spontanées.</p></article>
+    <article><div class="index">LA SUITE</div><h3>Qui reste jusqu'au bout&nbsp;?</h3><p>On poursuit l'élimination au fil de la réflexion. La dernière personne restante est celle qu'on n'a jamais choisi de faire partir.</p></article>
+   </div>
+   <div class="note"><strong>Éliminer n'est pas exclure.</strong> Une personne désignée continue de participer pleinement à la conversation : elle peut répondre, se défendre, influencer les avis et revenir dans une autre liste. Une nouvelle situation peut changer tous les choix.</div>
+  </div>
+ </section>
+
+ <section class="content" id="vivre">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">04 / PARTOUT, AVEC N'IMPORTE QUI</div><h2>Le concept appartient à la vie réelle.</h2></div><p>Il ne dépend ni du nombre de personnes ni du lieu. Il s'adapte à ce que les interlocuteurs ont en commun — ou à ce qu'ils ont envie de découvrir l'un chez l'autre.</p></div>
+   <div class="two-worlds">
+    <article class="world"><div class="eyebrow">À deux</div><h3>Deux personnes peuvent parler de tout un entourage.</h3><p>Deux amis évoquent les filles et les garçons de leur classe. Deux inconnus à une fête parlent des autres invités qu'ils connaissent. L'un peut même inclure son interlocuteur dans la liste.</p><div class="example">« Parmi les gens qu'on connaît ici, qui tu éliminerais en premier ? »</div><div class="people"><span class="person">A</span><span class="person">B</span><span class="person">C</span><span class="person">D</span><span class="person">E</span><span class="person">F</span><span class="person">…</span></div></article>
+    <article class="world"><div class="eyebrow">En groupe</div><h3>La conversation peut inclure ceux qui sont là — et ceux qui ne le sont pas.</h3><p>À dix autour d'une table, on peut parler du groupe, ajouter des amis absents, confronter les perceptions ou se demander ce que les autres choisiraient.</p><div class="example">« Vous pensez que notre groupe éliminerait qui en premier ? »</div><div class="people"><span class="person">Présents</span><span class="person">Absents</span><span class="person">Connaissances</span><span class="person">Nous-mêmes</span></div></article>
+   </div>
+  </div>
+ </section>
+
+ <section class="content">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">05 / À QUOI ÇA RESSEMBLE</div><h2>Une question ouvre une porte. Les réponses font le reste.</h2></div><p>Les exemples ne sont pas des cartes à tirer ni un questionnaire obligatoire. Ce sont des façons d'entrer dans une conversation, de la relancer et de laisser les personnes lui donner leur propre direction.</p></div>
+   <div class="conversation">
+    <div><div class="eyebrow">Un échange possible</div><h3>Une discussion qui quitte la routine.</h3><p class="sidecopy">Deux personnes à une fête parlent des gens qu'elles connaissent. Elles ne sont pas obligées d'être d'accord. C'est précisément ce qui rend l'échange intéressant.</p>
+     <div class="promptbar"><button class="active" data-prompt="Qu'est-ce qui te fait penser ça ?">Pourquoi ?</button><button data-prompt="Tu le garderais jusqu'à la fin dans une autre situation ?">Et dans un autre contexte ?</button><button data-prompt="Tu crois que les autres feraient le même choix ?">Et les autres ?</button><button data-prompt="Qu'est-ce qui pourrait te faire changer d'avis ?">Tu changerais d'avis ?</button></div>
+     <p id="prompt-answer" aria-live="polite">Qu'est-ce qui te fait penser ça ?</p>
+    </div>
+    <div class="dialogue">
+     <div class="line"><span>A</span>Parmi les gens de notre classe, tu éliminerais qui en premier&nbsp;?</div>
+     <div class="line right"><span>B</span>Je dirais Vincent. Je ne suis pas sûr de pouvoir lui faire confiance.</div>
+     <div class="line"><span>A</span>Pourtant, je le trouve plutôt loyal. Qu'est-ce qui te fait penser ça&nbsp;?</div>
+     <div class="line right"><span>B</span>Je l'ai déjà vu changer de position quand ça l'arrangeait. Mais je peux me tromper.</div>
+     <div class="line"><span>A</span>Et si tu devais continuer, qui serait le prochain&nbsp;? Est-ce que tu m'éliminerais, moi&nbsp;?</div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="content" id="humain">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">06 / LES DIMENSIONS HUMAINES</div><h2>Parler des personnes, c'est parler de ce qui nous relie.</h2></div><p>Don't Choose Me n'impose aucun thème. Il donne une place à des sujets que les conversations ordinaires évitent parfois, alors qu'ils façonnent profondément nos relations.</p></div>
+   <div class="pillars">
+    <article class="pillar"><div class="symbol">01</div><h3>Confiance</h3><p>À qui confierais-tu un secret ? Qui resterait fiable sous pression ?</p></article>
+    <article class="pillar"><div class="symbol">02</div><h3>Loyauté & trahison</h3><p>Qui resterait à tes côtés ? À quel moment une alliance peut-elle se briser ?</p></article>
+    <article class="pillar"><div class="symbol">03</div><h3>Influence & réputation</h3><p>Qui est écouté ? Qui est sous-estimé ? Qui influence sans le montrer ?</p></article>
+    <article class="pillar"><div class="symbol">04</div><h3>Stratégie</h3><p>Comment anticiper les choix des autres, créer des rapprochements ou changer de position ?</p></article>
+    <article class="pillar"><div class="symbol">05</div><h3>Attachement</h3><p>Peut-on apprécier quelqu'un sans lui faire confiance ? Qui voudrait-on garder près de soi ?</p></article>
+    <article class="pillar"><div class="symbol">06</div><h3>Perception</h3><p>Pourquoi deux personnes voient-elles le même individu de façons opposées ?</p></article>
+   </div>
+  </div>
+ </section>
+
+ <section class="content">
+  <div class="wrap">
+   <div class="section-top"><div><div class="section-no">07 / PSYCHOLOGIE & SCIENCES</div><h2>Notre cerveau est aussi un cerveau social.</h2></div><p>Les liens, l'appartenance et le regard des autres comptent dans notre expérience humaine. Comprendre ces mécanismes aide à saisir pourquoi certaines conversations nous touchent autant.</p></div>
+   <p class="brain-intro">Nos échanges mobilisent l'attention, la mémoire, l'interprétation des intentions et la capacité à envisager le point de vue d'autrui. Quand une discussion touche à la confiance ou au rejet, elle peut aussi faire émerger des émotions fortes.</p>
+   <div class="science">
+    <article><h3>Le besoin d'appartenance</h3><p>Les humains accordent une grande importance aux liens sociaux. Se sentir accepté, reconnu ou mis à l'écart peut influencer le bien-être et la façon dont on se comporte dans un groupe.</p></article>
+    <article><h3>Le rejet social</h3><p>Des études en neurosciences ont observé un chevauchement partiel entre les régions impliquées dans l'expérience du rejet social et celles associées à la douleur physique. Cela ne signifie pas que les deux expériences sont identiques.</p></article>
+    <article><h3>L'ocytocine et les liens</h3><p>L'ocytocine participe à certains processus d'attachement et d'interaction sociale. Elle n'est pas une simple « hormone de la confiance » : ses effets varient selon les personnes et les contextes.</p></article>
+   </div>
+   <div class="disclaimer">Don't Choose Me n'est ni une thérapie, ni un test de personnalité, ni une méthode scientifique pour mesurer la valeur ou les intentions d'une personne. Les choix exprimés sont des perceptions situées, qui peuvent évoluer. Les références ci-dessous permettent d'approfondir les sujets scientifiques sans leur faire dire plus qu'ils ne démontrent.</div>
+   <div style="margin-top:22px;display:flex;flex-direction:column;gap:9px;font-size:12px">
+    <a href="https://pubmed.ncbi.nlm.nih.gov/25251482/" target="_blank" rel="noopener">Eisenberger, N. I. — Social Pain and the Brain (Annual Review of Psychology, 2015) ↗</a>
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3273616/" target="_blank" rel="noopener">The neural bases of social pain — revue scientifique ↗</a>
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11077008/" target="_blank" rel="noopener">Revue systématique sur l'ocytocine et les interactions sociales ↗</a>
+   </div>
+  </div>
+ </section>
+
+ <div class="principles">
+  <div class="wrap">
+   <div class="section-no" style="color:#43552b">08 / UNE CONVICTION</div>
+   <h2>De la franchise, sans retirer à l'autre sa dignité.</h2>
+   <div class="principle-list">
+    <article><b>01 — SINCÉRITÉ</b><h3>Parler en son nom.</h3><p>« Je ne lui ferais pas confiance » exprime un ressenti. Ce n'est pas une vérité définitive sur quelqu'un.</p></article>
+    <article><b>02 — CURIOSITÉ</b><h3>Questionner avant de conclure.</h3><p>Demander pourquoi, écouter les raisons, accepter de ne pas être d'accord et reconnaître ce qu'on ignore.</p></article>
+    <article><b>03 — LIBERTÉ</b><h3>Ne jamais forcer la confidence.</h3><p>On peut ne pas répondre, passer à un autre sujet ou quitter une discussion. La franchise n'autorise ni humiliation ni pression.</p></article>
+   </div>
+  </div>
+ </div>
+
+ <section class="closing">
+  <div class="wrap">
+   <div class="eyebrow">Don't Choose Me</div>
+   <h2>Moins de conversations automatiques.<br><em>Plus de vraies rencontres.</em></h2>
+   <p>Pas besoin de s'inscrire, de s'équiper ou de déclarer une partie ouverte. Il suffit parfois d'une question pour commencer à parler autrement.</p>
+  </div>
+ </section>
+</main>
+<footer>
+ <div class="wrap foot"><a class="brand" href="#accueil">DON'T <i style="color:var(--green)">CHOOSE</i> ME.</a><small>Un concept social — sans matériel, libre, humain.</small></div>
+</footer>
+<script>
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const prompts=[...document.querySelectorAll('[data-prompt]')];
+prompts.forEach(btn=>btn.addEventListener('click',()=>{
+ prompts.forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+ document.getElementById('prompt-answer').textContent=btn.dataset.prompt;
+}));
+</script>
+</body>
+</html>
